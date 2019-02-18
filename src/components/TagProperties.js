@@ -35,11 +35,15 @@ class TagProperties extends Component {
     return (
       <div className='properties'>
         <div className='nav'>
-          <Link to={`/home/${neighbors.prev}`}>&#x1F880;</Link>
+          <Link to={`/home/${neighbors.prev}`}>
+            <img src='/img/prev-button.png' alt='Previous tag' />
+          </Link>
           <Link className='text-center' to='/home'>
             Home
           </Link>
-          <Link to={`/home/${neighbors.next}`}>&#x1F882;</Link>
+          <Link className='arrow-right' to={`/home/${neighbors.next}`}>
+            <img src='/img/next-button.png' alt='Next tag' />
+          </Link>
         </div>
         <h3 className='subheader'>
           {this.upperCaseFirstLetter(tagInfo.label)}
