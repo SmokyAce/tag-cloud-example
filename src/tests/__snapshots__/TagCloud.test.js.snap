@@ -2,6 +2,13 @@
 
 exports[`<TagCloud /> renders correctly 1`] = `
 <div
-  id="loading"
-/>
+  className="cloud-container"
+>
+  <div
+    id="loading"
+  />
+  <div
+    id="word-cloud"
+  />
+</div>
 `;

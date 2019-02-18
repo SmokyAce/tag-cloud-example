@@ -33,7 +33,7 @@ function fakeApi(result) {
   return new Promise(resolve => {
     setTimeout(() => {
       resolve(result);
-    }, 400);
+    }, 200);
   });
 }
 

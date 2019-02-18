@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Spinner from './Spinner';
 import { getTagCloud } from '../utils/api';
 import './TagCloud.css';
+import placeWords from '../utils/tag-cloud';
 
 function TagCloud() {
   const tags = useTags();
@@ -12,33 +13,50 @@ function TagCloud() {
     return tags.ids.length > 0 && tags.byIds[id].label;
   }
 
-  function getFontSize(id) {
-    const resolution = ((width / 1920) * 100) ^ 0;
-    const score = tags.byIds[id].sentimentScore;
-    return (score < 50 ? 0.7 : 1) + (((score * resolution) / 100) ^ 0) / 100;
-  }
-
   if (tags.ids.length === 0) {
-    return <Spinner />;
+    return (
+      <div className='cloud-container'>
+        <Spinner />
+        <div id='word-cloud' />
+      </div>
+    );
   }
+  const resolution = ((width / 3840) * 100) ^ 0;
+
+  const words = tags.ids.map(tagId => ({
+    word: tags.byIds[tagId].label,
+    score: (tags.byIds[tagId].sentimentScore * resolution) / 100,
+    id: tags.byIds[tagId].id
+  }));
+
+  const cloud = placeWords(words);
 
   return (
-    <div className='cloud'>
-      {tags.ids &&
-        tags.ids.map((tagId, i) => (
-          <Link
-            className='grow'
-            to={`/home/${tagId}`}
-            style={{
-              fontSize: `${getFontSize(tagId)}em`,
-              lineHeight: '0.8em',
-              color: `#${getRandomColor()}`
-            }}
-            key={i}
-          >
-            {getLabel(tagId)}
-          </Link>
-        ))}
+    <div className='cloud-container'>
+      <div id='word-cloud'>
+        {cloud &&
+          cloud.map((el, i) => (
+            <Link
+              className='grow'
+              to={`/home/${el.id}`}
+              style={{
+                fontSize: `${el.score / 3}px`,
+                lineHeight: '0.9em',
+                color: 'black',
+                position: 'absolute',
+                bottom: el.pos.bottom,
+                width: el.pos.width,
+                height: el.pos.height,
+                left: el.pos.left,
+                right: el.pos.right,
+                top: el.pos.top
+              }}
+              key={i}
+            >
+              {getLabel(el.id)}
+            </Link>
+          ))}
+      </div>
     </div>
   );
 }
@@ -67,7 +85,7 @@ function useWindowWidth() {
   const [width, setWidth] = useState(window.innerWidth);
   useEffect(() => {
     const handleResize = () => {
-      if (Math.abs(window.innerWidth - width) > 50) {
+      if (Math.abs(window.innerWidth - width) > 200) {
         setWidth(window.innerWidth);
       }
     };
@@ -77,10 +95,6 @@ function useWindowWidth() {
     };
   }, [width]);
   return width;
-}
-
-function getRandomColor() {
-  return Math.floor(Math.random() * 16777215).toString(16);
 }
 
 export default TagCloud;

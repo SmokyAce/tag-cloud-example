@@ -1,19 +1,18 @@
-.cloud {
+.cloud-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    max-width: 35%;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
-.cloud a {
-    flex: 0 1 auto;
-    margin: 10px;
+#word-cloud {
+    flex-grow: 1
+}
+
+.cloud-container a {
     text-decoration: none;
 }
 
-.cloud a:hover {
+.cloud-container a:hover {
     color: #3e77aa;
     text-decoration-line: underline;
 }
@@ -23,31 +22,5 @@
 }
 
 .grow:hover {
-    transform: scale(1.1);
-    margin: 15px;
-    text-shadow: 1px 1px 3px #8f969a;
-}
-
-@media screen and (max-width: 400px) {
-    .cloud {
-        max-width: 90%;
-    }
-    .cloud a {
-        margin: 5px;
-    }
-}
-
-@media screen and (min-width: 400px) and (max-width: 768px) {
-    .cloud {
-        max-width: 75%;
-    }
-    .cloud a {
-        margin: 5px;
-    }
-}
-
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-    .cloud {
-        max-width: 50%;
-    }
+    transform: scale(1.2);
 }

@@ -12,7 +12,14 @@ exports[`<App /> renders correctly 1`] = `
     </h1>
   </div>
   <div
-    id="loading"
-  />
+    className="cloud-container"
+  >
+    <div
+      id="loading"
+    />
+    <div
+      id="word-cloud"
+    />
+  </div>
 </div>
 `;
