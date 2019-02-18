@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TagPage /> renders correctly 1`] = `
+Array [
+  <div
+    className="header"
+  >
+    <h1>
+      Tag
+    </h1>
+  </div>,
+  <div
+    id="loading"
+  />,
+]
+`;

@@ -1,0 +1,23 @@
+.App {
+    font-family: Lucida Console, Courier, monospace;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.green {
+    color: green
+}
+
+.red {
+    color: red
+}
+
+.blue {
+    color: blue
+}
+
+.text-center {
+    text-align: center
+}

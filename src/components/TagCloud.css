@@ -1,0 +1,47 @@
+.cloud {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    max-width: 35%;
+}
+
+.cloud a {
+    flex: 0 1 auto;
+    margin: 10px;
+    text-decoration: none;
+}
+
+.cloud a:hover {
+    color: #3e77aa;
+    text-decoration-line: underline;
+}
+
+.grow {
+    transition: all .4s ease-in-out;
+}
+
+.grow:hover {
+    transform: scale(1.1);
+    margin: 15px;
+    text-shadow: 1px 1px 3px #8f969a;
+}
+
+@media screen and (max-width: 400px) {
+    .cloud {
+        max-width: 90%;
+    }
+}
+
+@media screen and (min-width: 400px) and (max-width: 768px) {
+    .cloud {
+        max-width: 75%;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .cloud {
+        max-width: 50%;
+    }
+}

@@ -1,0 +1,41 @@
+.properties {
+    padding: 0;
+    margin-top: 50px;
+    max-width: 400px;
+    align-self: center;
+    text-align: left;
+}
+
+.properties .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 30px;
+}
+
+.properties .nav a {
+    font-size: 1.3em;
+    color: #3e77aa;
+    text-decoration: none;
+}
+
+.properties .nav a:hover {
+    text-decoration: underline;
+}
+
+.properties .subheader {
+    margin: 5px;
+    font-size: 1.1em;
+}
+
+
+.list .subheader {
+    list-style-type: none;
+    font-size: 1.1em;
+    left: -40px;
+    position: relative;
+}
+
+.list-item {
+    padding: 5px 0;
+}
