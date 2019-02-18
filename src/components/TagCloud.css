@@ -32,11 +32,17 @@
     .cloud {
         max-width: 90%;
     }
+    .cloud a {
+        margin: 5px;
+    }
 }
 
 @media screen and (min-width: 400px) and (max-width: 768px) {
     .cloud {
         max-width: 75%;
+    }
+    .cloud a {
+        margin: 5px;
     }
 }
 
