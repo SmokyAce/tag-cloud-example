@@ -1,4 +1,4 @@
-<h1 align="center">Tag Cliud</h1>
+<h1 align="center">Tag Cloud</h1>
 
 <div align="center">
 
