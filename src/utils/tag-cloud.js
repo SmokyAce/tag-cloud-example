@@ -2,10 +2,10 @@ export default function(words) {
   // console.time('timer');
 
   const config = {
-    spiralResolution: 1, //Lower = better resolution
+    spiralResolution: 1,
     spiralLimit: 360 * 5,
-    lineHeight: 0.9,
-    xWordPadding: 2,
+    lineHeight: 0.8,
+    xWordPadding: 1,
     yWordPadding: 3
   };
 

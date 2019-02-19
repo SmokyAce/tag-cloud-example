@@ -8,12 +8,9 @@ import placeWords from '../utils/tag-cloud';
 function TagCloud() {
   const tags = useTags();
   const width = useWindowWidth();
+  const cloud = useCloud(width, tags);
 
-  function getLabel(id) {
-    return tags.ids.length > 0 && tags.byIds[id].label;
-  }
-
-  if (tags.ids.length === 0) {
+  if (cloud.length === 0) {
     return (
       <div className='cloud-container'>
         <Spinner />
@@ -21,16 +18,10 @@ function TagCloud() {
       </div>
     );
   }
-  const resolution = ((width / 3840) * 100) ^ 0;
 
-  const words = tags.ids.map(tagId => ({
-    word: tags.byIds[tagId].label,
-    score: (tags.byIds[tagId].sentimentScore * resolution) / 100,
-    id: tags.byIds[tagId].id
-  }));
-
-  const cloud = placeWords(words);
-
+  function getLabel(id) {
+    return tags.ids.length > 0 && tags.byIds[id].label;
+  }
   return (
     <div className='cloud-container'>
       <div id='word-cloud'>
@@ -95,6 +86,25 @@ function useWindowWidth() {
     };
   }, [width]);
   return width;
+}
+
+function useCloud(width, tags) {
+  const [cloud, setCloud] = useState([]);
+
+  const resolution = ((width / 1920) * 100) ^ 0;
+
+  useEffect(() => {
+    const words = tags.ids.map(tagId => ({
+      word: tags.byIds[tagId].label,
+      score: ((tags.byIds[tagId].sentimentScore * resolution) / 100) ^ 0,
+      id: tags.byIds[tagId].id
+    }));
+    if (words.length > 0) {
+      setCloud(placeWords(words));
+    }
+  }, [tags, width]);
+
+  return cloud;
 }
 
 export default TagCloud;
