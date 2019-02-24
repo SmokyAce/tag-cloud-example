@@ -1,0 +1,10 @@
+#list .subheader {
+    list-style-type: none;
+    font-size: 1.1em;
+    left: -40px;
+    position: relative;
+}
+
+#list-item {
+    padding: 5px 0;
+}

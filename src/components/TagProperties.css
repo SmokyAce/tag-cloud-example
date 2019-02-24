@@ -29,14 +29,14 @@
     font-size: 1.1em;
 }
 
-
-.list .subheader {
-    list-style-type: none;
-    font-size: 1.1em;
-    left: -40px;
-    position: relative;
+.positive {
+    color: green
 }
 
-.list-item {
-    padding: 5px 0;
+.negative {
+    color: red
+}
+
+.neutral {
+    color: blue
 }

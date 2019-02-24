@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect, Link } from 'react-router-dom';
 import Spinner from './Spinner';
+import List from './List';
+import ListItem from './ListItem';
 import { getTagInfoById, getNeighbors } from '../utils/api';
 import './TagProperties.css';
 
@@ -32,6 +34,29 @@ class TagProperties extends Component {
       return <Spinner />;
     }
 
+    const properties = [];
+    properties.push({
+      content: `Total Mentions: ${this.getTotalMentions()}`,
+      className: 'subheader'
+    });
+    ['positive', 'neutral', 'negative'].forEach(item => {
+      properties.push({
+        content: `${this.upperCaseLetter(item)} Mentions: ${this.getMention(
+          item
+        )}`,
+        className: item
+      });
+    });
+    properties.push({
+      content: 'List of page types',
+      className: 'subheader'
+    });
+    Object.keys(tagInfo.pageType).forEach(type =>
+      properties.push({
+        content: `${type}: ${tagInfo.pageType[type]}`
+      })
+    );
+
     return (
       <div className='properties'>
         <div className='nav'>
@@ -45,32 +70,14 @@ class TagProperties extends Component {
             <img src='/img/next-button.png' alt='Next tag' />
           </Link>
         </div>
-        <h3 className='subheader'>
-          {this.upperCaseFirstLetter(tagInfo.label)}
+        <h3 className='subheader text-center'>
+          {this.upperCaseLetter(tagInfo.label)}
         </h3>
-        <ul className='list'>
-          <li className='list-item subheader'>
-            Total Mentions: {this.getTotalMentions()}
-          </li>
-          <li className='list-item green'>
-            Positive Mentions: {this.getMention('positive')}
-          </li>
-          <li className='list-item blue'>
-            Neutral Mentions: {this.getMention('neutral')}
-          </li>
-          <li className='list-item red'>
-            Negative Mentions: {this.getMention('negative')}
-          </li>
-          <li className='list-item subheader'>List of page types</li>
-          {tagInfo.pageType &&
-            Object.keys(tagInfo.pageType).map((type, i) => {
-              return (
-                <li key={i} className='list-item'>
-                  {type}: {tagInfo.pageType[type]}
-                </li>
-              );
-            })}
-        </ul>
+        <List>
+          {properties.map((prop, i) => (
+            <ListItem key={i} {...prop} />
+          ))}
+        </List>
       </div>
     );
   }
@@ -111,7 +118,7 @@ class TagProperties extends Component {
     return 0;
   };
 
-  upperCaseFirstLetter = string => {
+  upperCaseLetter = string => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 }
