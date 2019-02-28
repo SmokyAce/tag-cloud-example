@@ -15,7 +15,9 @@
     "eject": "react-scripts eject",
     "lint": "eslint \"src/**/*.js\"",
     "lint:fix": "yarn lint --fix",
-    "format": "prettier-eslint --write \"**/*.{js,json}\""
+    "format": "prettier-eslint --write \"**/*.{js,json}\"",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -31,6 +33,12 @@
     "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-react-hooks": "^1.0.2",
     "prettier-eslint-cli": "^4.7.1",
-    "react-test-renderer": "^16.8.2"
+    "react-test-renderer": "^16.8.2",
+    "@storybook/react": "^4.1.13",
+    "@storybook/addon-actions": "^4.1.13",
+    "@storybook/addon-links": "^4.1.13",
+    "@storybook/addons": "^4.1.13",
+    "@babel/core": "^7.3.4",
+    "babel-loader": "^8.0.5"
   }
 }

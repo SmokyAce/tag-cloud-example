@@ -4,6 +4,23 @@ exports[`<List /> renders correctly 1`] = `
 <ul
   id="list"
 >
-  List
+  <li
+    className="subheader"
+    id="list-item"
+  >
+    Subheader
+  </li>
+  <li
+    className=""
+    id="list-item"
+  >
+    Item 1
+  </li>
+  <li
+    className=""
+    id="list-item"
+  >
+    Item 2
+  </li>
 </ul>
 `;

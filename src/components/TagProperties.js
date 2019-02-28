@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect, Link } from 'react-router-dom';
 import Spinner from './Spinner';
-import List from './List';
-import ListItem from './ListItem';
+import { List, ListItem } from './List';
 import { getTagInfoById, getNeighbors } from '../utils/api';
 import './TagProperties.css';
 
@@ -37,7 +36,7 @@ class TagProperties extends Component {
     const properties = [];
     properties.push({
       content: `Total Mentions: ${this.getTotalMentions()}`,
-      className: 'subheader'
+      subheader: true
     });
     ['positive', 'neutral', 'negative'].forEach(item => {
       properties.push({
@@ -49,7 +48,7 @@ class TagProperties extends Component {
     });
     properties.push({
       content: 'List of page types',
-      className: 'subheader'
+      subheader: true
     });
     Object.keys(tagInfo.pageType).forEach(type =>
       properties.push({
